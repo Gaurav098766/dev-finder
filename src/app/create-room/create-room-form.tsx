@@ -21,7 +21,7 @@ const formSchema = z.object({
   name: z.string().min(2).max(50),
   description: z.string().min(2).max(50),
   githubRepo: z.string().min(2).max(100),
-  language: z.string().min(2).max(50),
+  tags: z.string().min(2).max(50),
 });
 
 export default function CreateRoomForm() {
@@ -32,7 +32,7 @@ export default function CreateRoomForm() {
       name: "",
       description: "",
       githubRepo: "",
-      language: "",
+      tags: "",
     },
   });
 
@@ -51,7 +51,10 @@ export default function CreateRoomForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input
+                  {...field}
+                  placeholder="Give the name of the project you are working on"
+                />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -68,7 +71,7 @@ export default function CreateRoomForm() {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} placeholder="Describe your project" />
               </FormControl>
               <FormDescription>Please describe your project.</FormDescription>
               <FormMessage />
@@ -83,7 +86,7 @@ export default function CreateRoomForm() {
             <FormItem>
               <FormLabel>GithubRepo</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} placeholder="Mark your github repository" />
               </FormControl>
               <FormDescription>Mark your github repository</FormDescription>
               <FormMessage />
@@ -93,12 +96,12 @@ export default function CreateRoomForm() {
 
         <FormField
           control={form.control}
-          name="language"
+          name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Primary Programming Language</FormLabel>
+              <FormLabel>Tags</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} placeholder="typescript, nextjs, tailwind" />
               </FormControl>
               <FormDescription>
                 This is your public display name.
